@@ -1,0 +1,10 @@
+bootstrap-5.0.2-dist
+
+/pretemplate
+
+# Django Stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+__pycache__
