@@ -1,0 +1,26 @@
+<!DOCTYLE html>
+<html lang="ko"></html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> {{post.title}} - Blog </title>
+        <!-- CSS -->
+        <!-- Icons -->
+    </head>
+    <nav>
+        <a href="/blog">Blog</a>
+    </nav>
+    <body>
+      <h1>Blog<h1>
+      {% for p in posts %}
+        <hr/>
+        <h1>{{ post.title }}<h1>
+        <h4>{{ post.created_at }}<h4>
+        <p>{{ post.content }}</p>
+      {% endfor %}
+
+      <hr/>
+      <h3>댓글명 : 댓글입니다.</h3>
+    </body>
+</html>
