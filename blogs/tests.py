@@ -7,6 +7,27 @@ class TestView(TestCase):
         # setup()함수 내에서 기본적으로 Client를 사용하겠다.
         self.client = Client()
 
+    def navbar_test(self, soup):
+        # 1.4 네비게이션 바가 있다.
+        navbar = soup.nav
+        # 1.5 Blog, cv, project 라는 문구가 네비게이션 바에 있다.
+        self.assertIn('Blog', navbar.text)
+        self.assertIn('CV', navbar.text)
+        self.assertIn('Project', navbar.text)
+
+        logo_btn = navbar.find('a', text='Dongwoo Kang')
+        self.assertEqual(logo_btn.attrs['href'], '/')
+
+        cv_btn = navbar.find('a', text='CV')
+        self.assertEqual(cv_btn.attrs['href'], '/cv/')
+
+        project_btn = navbar.find('a', text='Project')
+        self.assertEqual(project_btn.attrs['href'], '/project/')
+
+        blog_btn = navbar.find('a', text='Blog')
+        self.assertEqual(blog_btn.attrs['href'], '/blog/')
+        
+
     def  test_post_list(self):
         # 1.1 포스트 목록 페이지를 가져온다.
         response = self.client.get('/blog/')
@@ -15,12 +36,8 @@ class TestView(TestCase):
         # 1.3 페이지 타이틀은 Blog - Dongwoo Kang이다.
         soup = BeautifulSoup(response.content, 'html.parser')
         self.assertEqual(soup.title.text, 'Blog - Dongwoo Kang')
-        # 1.4 네비게이션 바가 있다.
-        navbar = soup.nav
-        # 1.5 Blog, cv, project 라는 문구가 네비게이션 바에 있다.
-        self.assertIn('Blog', navbar.text)
-        self.assertIn('CV', navbar.text)
-        self.assertIn('Project', navbar.text)
+
+        self.navbar_test(soup) # navbar_test 함수 실행
 
 
         # 2.1 메인 영역에 게시물이 하나도 없다면
@@ -68,9 +85,7 @@ class TestView(TestCase):
         soup = BeautifulSoup(response.content, 'html.parser')
 
         # 2.2 포스트 목록 페이지와 똑같은 네비게이션 바가 있다.
-        navbar = soup.nav
-        self.assertIn('Blog', navbar.text)
-        self.assertIn('CV', navbar.text)
+        self.navbar_test(soup) # navbar_test 함수 실행
 
         # 2.3 첫번째 포스트의 제목이 웹 브라우저 탭 타이틀에 다 들어있다.
         self.assertIn(post_001.title, soup.title.text)
