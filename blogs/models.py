@@ -12,7 +12,7 @@ class Post(models.Model):
     head_image = models.ImageField(upload_to='blogs/images/%Y/%m/%d/', blank=True)
     file_upload = models.FileField(upload_to='blogs/files/%Y/%m/%d/', blank=True)
 
-    author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'[{self.pk}]{self.title} :: {self.author}'
