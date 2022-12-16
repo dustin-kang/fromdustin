@@ -3,7 +3,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8">
-        <title> Dustin(강동우) </title>
+        <title>Blog - Dongwoo Kang</title>
 
         <!-- CSS -->
         <link href="{% static 'blogs/bootstrap/bootstrap.min.css' %}" rel="stylesheet" media="screen">
@@ -30,8 +30,9 @@
 
         <!-- Contents -->
         <div class="container my-5 px-5 text-align:left;">
-          <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="row row-cols-1 row-cols-md-3 g-4" id="main-area">
             <!-- Card -->
+          {% if post_list.exists %}
             {% for p in post_list %}
             <div class="col">
               <a href="/blog/{{ p.id }}" style="text-decoration: none; color: black;" >
@@ -50,6 +51,9 @@
               </a>
             </div>
             {% endfor %}
+          {% else %}
+            <h3>아직 게시물이 없습니다.</h3>
+          {% endif %}
           </div>
         </div>
         
