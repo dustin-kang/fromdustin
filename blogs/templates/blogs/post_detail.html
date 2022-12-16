@@ -1,69 +1,31 @@
-<!DOCTYLE html>
-{% load static %}
-<html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <title> {{post.title}} - Dongwoo Kang </title>
+{% extends 'blogs/base.html' %}
 
-        <!-- CSS -->
-        <link href="{% static 'blogs/bootstrap/bootstrap.min.css' %}" rel="stylesheet" media="screen">
-        <link href="{% static 'blogs/bootstrap/styles.css' %}" rel="stylesheet" type="text/css">
+{% block head_title %}
+  {{ post.title }} - Dongwoo Kang
+{% endblock %}
 
-        <!-- Icons -->
 
-    </head>
-    <body>
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-              <a class="navbar-brand" href="/">Dongwoo Kang</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                      <li class="nav-item"><a class="nav-link" aria-current="page" href="/cv/">CV</a></li>
-                      <li class="nav-item"><a class="nav-link" href="projects.html">Project</a></li>
-                      <li class="nav-item"><a class="nav-link active" href="/blog/">Blog</a></li>
-                  </ul>
-                </div>
-            </div>
-        </nav>
+{% block main_area %}
+  <div id="post-area">
+    <!-- 주제 -->
+    <p class="card-text; my-1" style="font-weight:700; font-size: x-small; color:#6e6e73">일상기록</p>
+    <!-- 제목 / 소제목 -->
+    <h2 class="card-title" style="font-weight: 700; font-size:50px; color:#1d1d1f; word-break: keep-all;"><strong>{{ post.title }}</strong></h2><br>
+    <h2 class="card-title mb-3" style="font-weight: 700; font-size:x-large; color:#1d1d1f; word-break: keep-all;">{{ post.hook_text }}</h2>
+    <!-- 날짜 -->
+    <p class="card-text; my-1" style="font-weight:700; font-size: small; color:#6e6e73">{{ post.created_at }}</p><br><br>
+    <!-- 프리뷰 이미지/ 콘텐츠 -->
+    <p class="card-text; my-1" style="font-size: 20px; color:#1d1d1f; word-break: keep-all; ">
+      {% if post.head_image %}
+        <img class= "img-fluid rounded" src="{{ post.head_image.url }}" alt=" {{ post.title }} head_image">
+      {% else %}
+        <img class= "img-fluid rounded mb-5" src="http://picsum.photos/seed/{{ post.id }}/1224/200" alt=" random_image">
+      {% endif %}
+      {{ post.content }}
+    </p>
+  </div>
 
-        <!-- Contents -->
-        <div class="container my-5 px-5 text-align:left;">
-          <p class="card-text; my-1" style="font-weight:700; font-size: x-small; color:#6e6e73">일상기록</p>
-          <h2 class="card-title" style="font-weight: 700; font-size:50px; color:#1d1d1f; word-break: keep-all;"><strong>{{ post.title }}</strong></h2><br>
-          <h2 class="card-title mb-3" style="font-weight: 700; font-size:x-large; color:#1d1d1f; word-break: keep-all;">{{ post.hook_text }}</h2>
-          <p class="card-text; my-1" style="font-weight:700; font-size: small; color:#6e6e73">{{ post.created_at }}</p><br><br>
-          <p class="card-text; my-1" style="font-size: 20px; color:#1d1d1f; word-break: keep-all; ">
-            {% if post.head_image %}
-              <img class= "img-fluid rounded" src="{{ post.head_image.url }}" alt=" {{ post.title }} head_image">
-            {% else %}
-              <img class= "img-fluid rounded mb-5" src="http://picsum.photos/seed/{{ post.id }}/1224/200" alt=" random_image">
-            {% endif %}
-            {{ post.content }}
-          </p>
-        </div>
-
-        
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-        <script src="pretemplate/bootstrap-5.0.2-dist/js/scripts.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/69f4f9d5cb.js" crossorigin="anonymous"></script>
-    </body>
-    
-    <!-- Footer -->
-    <hr>
-    <footer class="py-3 bg-white">
-      <div class="container">
-          <div style="text-align:center">
-            Copyright &copy; Dustin Website<br>
-            <a href="https://github.com/dustin-kang" style="color: black;"><i class="fa-brands fa-github fa-lg"></i></a>
-            <a href="www.linkedin.com/in/dongwoolinked" style="color: black;"><i class="fa-brands fa-linkedin fa-lg"></i></a>
-            <a href="https://www.youtube.com/channel/@dustinyoutube" style="color: black;"><i class="fa-brands fa-youtube fa-lg" ></i></a>
-          </div>
-        </p>
-      </div>
-    </footer>
-</html>
+  <!-- 댓글 -->
+  <div id="comment-area">
+  </div>
+{% endblock %}
