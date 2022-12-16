@@ -32,9 +32,9 @@
         <div class="container my-5 px-5 text-align:left;">
           <div class="row row-cols-1 row-cols-md-3 g-4" id="main-area">
             <!-- Card -->
-          {% if post_list.exists %}
+            {% if post_list.exists %}
             {% for p in post_list %}
-            <div class="col">
+            <div class="col" id="post-area">
               <a href="/blog/{{ p.id }}" style="text-decoration: none; color: black;" >
                 <div class="card border-light; rounded; ">
                   {% if post.head_image.url %}
@@ -51,9 +51,9 @@
               </a>
             </div>
             {% endfor %}
-          {% else %}
-            <h3>아직 게시물이 없습니다.</h3>
-          {% endif %}
+            {% else %}
+              <h3>아직 게시물이 없습니다.</h3>
+            {% endif %}
           </div>
         </div>
         
