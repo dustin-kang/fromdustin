@@ -7,6 +7,8 @@ class TestView(TestCase):
     def setUp(self):
         # setup()함수 내에서 기본적으로 Client를 사용하겠다.
         self.client = Client()
+        self.user_trump = User.objects.create_user(username='trump', password='somepassword')
+        self.user_biden = User.objects.create_user(username='biden', password='somepassword')
 
     def navbar_test(self, soup):
         # 1.4 네비게이션 바가 있다.
@@ -98,3 +100,19 @@ class TestView(TestCase):
 
         # 2.5 첫번쨰 포스트의 내용이 포스트 영역에 있다. 
         self.assertIn(post_001.content, post_area.text)
+
+    def test_create_post(self):
+        # 로그인이 안된 경우
+        response = self.client.get('/blog/create_post/')
+        self.assertNotEqual(response.status_code, 200)
+        # 로그인이 된 경우
+        self.client.login(username='trump', password='somepassword')
+
+        # 포스트 작성 페이지 테스트
+        response = self.client.get('/blog/create_post/')
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        self.assertEqual('Create Post - Blog', soup.title.text)
+        main_area = soup.find('div', id='main-area')
+        self.assertIn('📝 Create New Post', main_area.text)
