@@ -1,1 +1,20 @@
 # dongwooblog
+
+Package          Version
+---------------- -----------
+asgiref          3.5.2
+beautifulsoup4   4.11.1
+certifi          2022.9.24
+distlib          0.3.6
+Django           4.1.4
+filelock         3.8.0
+Pillow           9.3.0
+pip              22.3.1
+pipenv           2022.10.12
+platformdirs     2.5.2
+setuptools       65.5.0
+soupsieve        2.3.2.post1
+sqlparse         0.4.3
+virtualenv       20.16.5
+virtualenv-clone 0.5.7
+wheel            0.37.1
