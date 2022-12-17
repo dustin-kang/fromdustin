@@ -4,13 +4,11 @@
   {{ post.title }} - Dongwoo Kang
 {% endblock %}
 
-
 {% block main_area %}
-  <div id="post-area">
     <!-- 주제 -->
     <p class="card-text; my-1" style="font-weight:700; font-size: x-small; color:#6e6e73">{{ post.category }}</p>
     <!-- 제목 / 소제목 -->
-    <h2 class="card-title" style="font-weight: 700; font-size:50px; color:#1d1d1f; word-break: keep-all;"><strong>{{ post.title }}</strong></h2><br>
+    <h2 class="card-title" style="font-weight: 700; font-size:50px; color:#1d1d1f; word-break: keep-all;"><strong>{{ post.title }}</strong>
     <h2 class="card-title mb-3" style="font-weight: 700; font-size:x-large; color:#1d1d1f; word-break: keep-all;">{{ post.hook_text }}</h2>
     <!-- 날짜 -->
     <p class="card-text; my-1" style="font-weight:700; font-size: small; color:#6e6e73">{{ post.created_at }}</p><br><br>
@@ -23,7 +21,8 @@
       {% endif %}
       {{ post.content }}
     </p>
-  </div>
+
+
 
   <!-- 댓글 -->
   <div id="comment-area">

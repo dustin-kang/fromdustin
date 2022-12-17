@@ -1,6 +1,7 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Category
+from django.core.exceptions import PermissionDenied
 
 class PostList(ListView):
     model = Post
@@ -27,3 +28,17 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def test_func(self):
         # 스태프나 superuser인 경우에만 작성가능하다.
         return self.request.user.is_superuser or self.request.user.is_staff
+
+class PostUpdate(LoginRequiredMixin, UpdateView):
+      model = Post
+      fields = ['title', 'hook_text', 'content', 'head_image', 'category']
+
+      template_name = 'blog/post_update_form.html'
+
+      def dispatch(self, request, *args, **kwargs):
+        # 방문자(request.user)는 로그인 상태, 작성자와 동일해야 합니다.
+          if request.user.is_authenticated and request.user == self.get_object().author():
+              return super(PostUpdate, self).dispatch(request, *args, **kwargs)
+          else:
+            raise PermissionDenied
+             
