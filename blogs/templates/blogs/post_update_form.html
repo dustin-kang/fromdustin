@@ -3,13 +3,14 @@
 {% block head_title %}Edit Post - Blog{% endblock %}
 
 {% block main_area %}
-    <h1>📝 Edit New Post<h1>
+    <h1>글 수정하기<h1>
     <hr>
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
         <table>
             {{ form }}
         </table>
         <br>
+        
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 {% endblock %}

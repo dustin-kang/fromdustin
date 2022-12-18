@@ -4,6 +4,9 @@
   {{ post.title }} - Dongwoo Kang
 {% endblock %}
 
+  <!-- 스태프 버튼 -->
+
+
 {% block main_area %}
     <!-- 주제 -->
     <main class="px-3" style="text-align: left;">
@@ -26,6 +29,12 @@
           <hr>
         </div>
       </a>
+      {% if user.is_authenticated and user == post.author %}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a class="btn btn-light" href="/blog/update_post/{{ post.pk }}/" role="button"><i class="fas fa-pen" ></i></a>
+        </div><br>
+      {% endif %} 
+
     
       <!-- Comment -->
       <div id="comment-area">

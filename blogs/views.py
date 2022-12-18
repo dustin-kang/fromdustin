@@ -30,15 +30,15 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return self.request.user.is_superuser or self.request.user.is_staff
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
-      model = Post
-      fields = ['title', 'hook_text', 'content', 'head_image', 'category']
+    model = Post
+    fields = ['title', 'hook_text', 'content', 'head_image', 'category']
 
-      template_name = 'blog/post_update_form.html'
+    template_name = 'blogs/post_update_form.html'
 
-      def dispatch(self, request, *args, **kwargs):
-        # 방문자(request.user)는 로그인 상태, 작성자와 동일해야 합니다.
-          if request.user.is_authenticated and request.user == self.get_object().author():
-              return super(PostUpdate, self).dispatch(request, *args, **kwargs)
-          else:
-            raise PermissionDenied
+    def dispatch(self, request, *args, **kwargs):
+      # 방문자(request.user)는 로그인 상태, 작성자와 동일해야 합니다.
+        if request.user.is_authenticated and request.user == self.get_object().author:
+          return super(PostUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+          raise PermissionDenied
              
