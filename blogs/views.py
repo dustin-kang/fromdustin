@@ -97,6 +97,21 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 
         return response
 
+def category_page(request, slug):
+  category = Category.objects.get(slug=slug)
+
+  return render(
+    request,
+    'blogs/post_list.html',
+    {
+      'post_list' : Post.objects.filter(category = category),
+      'categories' : Category.objects.all(),
+      'no_category_post_count' : Post.objects.filter(category=None).count(),
+      'category': category,
+    }
+  )
+
+
 def tag_page(request, slug):
   tag = Tag.objects.get(slug=slug)
   post_list = tag.post_set.all()
