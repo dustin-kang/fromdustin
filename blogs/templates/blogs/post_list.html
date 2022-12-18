@@ -1,33 +1,43 @@
-{% extends 'blogs/base.html' %}
+{% extends 'blogs/base.html' %} <!-- base 템플릿 상속 -->
 {% block main_area %}
+<main class="px-3" style="text-align: left;">
+  <!-- TAG -->
+  <br>
+  <button type="button" class="btn btn-outline-secondary">#{{ p.category }}</button>
+  <hr>
 
-<!-- Card -->
-{% if post_list.exists %}
-{% for p in post_list %}
-<div class="col" id="post-area">
-  <a href="/blog/{{ p.id }}" style="text-decoration: none; color: black;" >
-    <div class="card border-light; rounded; ">
-      {% if post.head_image.url %}
-        <img src="{{ p.head_image.url }}" class="card-img-top;" alt="{{ p }} head image">
-      {% else %}
-        <img src="http://picsum.photos/seed/{{ p.id }}/303/170" class= "card-img-top;" alt=" random_image"> 
-      {% endif %}
-      <div class="card-body">
-        <p class="card-text; my-1" style="font-weight:700; font-size: x-small; color:#6e6e73">{{ p.category }}</p>
-        <h5 class="card-title" style="font-weight: 700; font-size: x-large; color:#1d1d1f">{{ p.title }}</h5><br>
-        <p class="card-text; my-1" style="font-weight:700; font-size: small; color:#6e6e73">{{ p.created_at }}</p>
-      </div>
-    </div>
-  </a>
-</div>
-{% endfor %}
-{% else %}
-  <h3>아직 게시물이 없습니다.</h3>
-{% endif %}
+  <!-- 스태프 버튼 -->
+  {% if user.is_authenticated %}
+  {% if user.is_superuser or user.is_staff %}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a class="btn btn-light" href="/blog/create_post/" role="button"><i class="fas fa-pen" ></i></a>
+    </div><br>
+  {% endif %}
+  {% endif %} 
+
+  {% if post_list.exists %}
+    {% for p in post_list %}
+      <a href="/blog/{{ p.id }}" style="text-decoration: none; color:inherit;" >
+        <div id="post-area">
+          {% if post.head_image.url %}
+          <img src="{{ p.head_image.url }}" class="card-img-top;" alt="{{ p }} head image">
+          {% else %}
+          <img src="http://picsum.photos/seed/{{ p.id }}/606/300" class="img-fluid rounded" alt="random_image">
+          {% endif %}
+          <h3 class="card-title my-3"><strong>{{ p.title }}</strong></h3>
+          <p class="card-text my-2"><small class="text-muted">{{ p.created_at }}</small></p>
+          <p class="card-text text-muted">{{ p.content }}</p>
+          <hr>
+        </div>
+      </a>
+    {% endfor %}   
+  {% else %}
+  <h3>아직 게시물이 없습니다.<h3>
+  {% endif %}
+  </main>
 {% endblock %}
 
-
-{% block pagenations %}
+{% comment %} {% block pagenations %}
 <!-- Pagenation -->
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
@@ -50,5 +60,5 @@
   </ul>
 </nav>
 
-{% endblock %}
+{% endblock %} {% endcomment %}
 

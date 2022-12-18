@@ -6,25 +6,29 @@
 
 {% block main_area %}
     <!-- 주제 -->
-    <p class="card-text; my-1" style="font-weight:700; font-size: x-small; color:#6e6e73">{{ post.category }}</p>
-    <!-- 제목 / 소제목 -->
-    <h2 class="card-title" style="font-weight: 700; font-size:50px; color:#1d1d1f; word-break: keep-all;"><strong>{{ post.title }}</strong>
-    <h2 class="card-title mb-3" style="font-weight: 700; font-size:x-large; color:#1d1d1f; word-break: keep-all;">{{ post.hook_text }}</h2>
-    <!-- 날짜 -->
-    <p class="card-text; my-1" style="font-weight:700; font-size: small; color:#6e6e73">{{ post.created_at }}</p><br><br>
-    <!-- 프리뷰 이미지/ 콘텐츠 -->
-    <p class="card-text; my-1" style="font-size: 20px; color:#1d1d1f; word-break: keep-all; ">
+    <main class="px-3" style="text-align: left;">
+      <!-- Title -->
+      <br>
+      <hr>
+      <h1 class="card-title mb-1"><strong>{{ post.title }}</strong></h1>
+      <p class="card-text"><small class="text-muted">{{ post.created_at }}</small> <span class="badge bg-secondary">{{ post.category }}</span></p>
+      <h5 class="card-title mb-3 text-muted">{{ post.hook_text }}</h5>
       {% if post.head_image %}
         <img class= "img-fluid rounded" src="{{ post.head_image.url }}" alt=" {{ post.title }} head_image">
       {% else %}
-        <img class= "img-fluid rounded mb-5" src="http://picsum.photos/seed/{{ post.id }}/1224/200" alt=" random_image">
+        {% comment %} <img class= "img-fluid rounded mb-5" src="http://picsum.photos/seed/{{ post.id }}/606/300" alt=" random_image"> {% endcomment %}
       {% endif %}
-      {{ post.content }}
-    </p>
-
-
-
-  <!-- 댓글 -->
-  <div id="comment-area">
-  </div>
+      <br>
+      <!-- POST-->
+      <a href="#" style="text-decoration: none; color:inherit;" >
+        <div>
+          <p class="card-text">{{ post.content }}</p>
+          <hr>
+        </div>
+      </a>
+    
+      <!-- Comment -->
+      <div id="comment-area">
+      </div>
+    </main>
 {% endblock %}
