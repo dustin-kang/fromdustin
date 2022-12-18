@@ -1,11 +1,16 @@
 {% extends 'blogs/base.html' %} <!-- base 템플릿 상속 -->
 {% block main_area %}
 <main class="px-3" style="text-align: left;">
+
   <!-- TAG -->
   <br>
-  {% if tag %}
-    <button type="button" class="btn btn-outline-secondary">#{{ tag }}({{ tag.post_set.count }})</button>
+  {% for p in post_list %}
+  {% if p.tags.exists %}
+      {% for tag in p.tags.iterator %}
+        <a type="button" class="btn btn-outline-secondary btn-sm" href="{{ tag.get_absolute_url }}">#{{ tag }} ({{ tag.post_set.count }}) </a>
+      {% endfor %}
   {% endif %}
+  {% endfor %}
   <hr>
 
   <!-- 스태프 버튼 -->
