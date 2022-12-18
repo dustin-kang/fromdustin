@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cv',
     'projects',
     'crispy_forms',
+    'markdownx',
 ]
 
 MIDDLEWARE = [

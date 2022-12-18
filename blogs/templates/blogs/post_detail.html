@@ -27,7 +27,7 @@
       <br>
       <!-- POST-->
         <div>
-          <p class="card-text">{{ post.content }}</p>
+          <p class="card-text">{{ post.get_content_markdown | safe }}</p>
           <hr>
           {% if post.tags.exists %}
           {% for tag in post.tags.all %}

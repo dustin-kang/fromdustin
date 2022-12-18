@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-import os
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdown
+import os, requests
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -26,7 +29,8 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=30)
     hook_text = models.CharField(max_length=100, blank=True)
-    content = models.TextField(null=True)
+    content = MarkdownxField()
+    # content = models.TextField(null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     
@@ -45,3 +49,5 @@ class Post(models.Model):
     def get_absolute_url(self):
         return f'/blog/{self.pk}/'
 
+    def get_content_markdown(self):
+        return markdown(self.content)

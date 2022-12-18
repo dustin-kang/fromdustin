@@ -4,13 +4,12 @@
 
   <!-- TAG -->
   <br>
-  {% for p in post_list %}
-  {% if p.tags.exists %}
-      {% for tag in p.tags.iterator %}
+  {% if tag %}
         <a type="button" class="btn btn-outline-secondary btn-sm" href="{{ tag.get_absolute_url }}">#{{ tag }} ({{ tag.post_set.count }}) </a>
-      {% endfor %}
   {% endif %}
-  {% endfor %}
+  {% if tag %}
+  <a type="button" class="btn btn-outline-secondary btn-sm" href="{{ tag.get_absolute_url }}">#{{ tag }} ({{ tag.post_set.count }}) </a>
+{% endif %}
   <hr>
 
   <!-- 스태프 버튼 -->
@@ -33,7 +32,7 @@
           {% endif %}
           <h3 class="card-title my-3"><strong>{{ p.title }}</strong></h3>
           <p class="card-text my-2"><small class="text-muted">{{ p.created_at }}</small></p>
-          <p class="card-text text-muted">{{ p.content }}</p>
+          <p class="card-text text-muted">{{ p.get_content_markdown | truncatechars_html:20 | safe }}</p>
           <hr>
         </div>
       </a>
