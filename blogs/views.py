@@ -1,6 +1,7 @@
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Post, Category
+from .models import Post, Category, Tag
 from django.core.exceptions import PermissionDenied
 
 class PostList(ListView):
@@ -41,4 +42,18 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
           return super(PostUpdate, self).dispatch(request, *args, **kwargs)
         else:
           raise PermissionDenied
-             
+
+def tag_page(request, slug):
+  tag = Tag.objects.get(slug=slug)
+  post_list = tag.post_set.all()
+
+  return render(
+    request,
+    'blogs/post_list.html',
+    {
+      'post_list' : post_list,
+      'tag' : tag,
+      'categories' : Category.objects.all(),
+      'no_category_post_count' : Post.objects.filter(category=None).count(),
+    }
+  )

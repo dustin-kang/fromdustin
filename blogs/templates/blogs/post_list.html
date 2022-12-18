@@ -3,7 +3,9 @@
 <main class="px-3" style="text-align: left;">
   <!-- TAG -->
   <br>
-  <button type="button" class="btn btn-outline-secondary">#{{ p.category }}</button>
+  {% if tag %}
+    <button type="button" class="btn btn-outline-secondary">#{{ tag }}({{ tag.post_set.count }})</button>
+  {% endif %}
   <hr>
 
   <!-- 스태프 버튼 -->
