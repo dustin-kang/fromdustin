@@ -23,7 +23,7 @@ class PostDetail(DetailView):
 
 class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
-    fields = ['title', 'hook_text', 'content', 'head_image', 'category']
+    fields = ['title', 'hook_text', 'content', 'head_image', 'category', 'tags']
 
     def test_func(self):
         # 스태프나 superuser인 경우에만 작성가능하다.
@@ -31,7 +31,7 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title', 'hook_text', 'content', 'head_image', 'category']
+    fields = ['title', 'hook_text', 'content', 'head_image', 'category', 'tags']
 
     template_name = 'blogs/post_update_form.html'
 

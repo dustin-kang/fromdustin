@@ -13,9 +13,19 @@
       <!-- Title -->
       <br>
       <hr>
+      <span class="text-muted" style="font-size:10px">
+        {{ post.category }}
+        {% if post.tag.exists %}
+          <i class="fas fa-tags"></i>
+          {% for tag in post.tags.all %}
+            <a href="{{ tag.get_absolute_url }}" class="badge badge-light">{{ tag }}</a>
+          {% endfor %}
+          <br/>
+          <br/>
+        {% endif %} 
+      </span>
       <h1 class="card-title mb-1"><strong>{{ post.title }}</strong></h1>
-      <p class="card-text"><small class="text-muted">{{ post.created_at }}</small> <span class="badge bg-secondary">{{ post.category }}</span></p>
-      <h5 class="card-title mb-3 text-muted">{{ post.hook_text }}</h5>
+      <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
       {% if post.head_image %}
         <img class= "img-fluid rounded" src="{{ post.head_image.url }}" alt=" {{ post.title }} head_image">
       {% else %}
