@@ -41,9 +41,27 @@
         </div><br>
       {% endif %} 
 
+
+      <!-- COMMENT -->
+      <div id="disqus_thread"></div> <!-- 실제 댓글 서버스 출력 -->
+      <script>
+          var disqus_config = function () {
+            this.page.url = "http://127.0.0.1:8000/blog/{{ post.pk }}/";
+            this.page.identifier = "{{ post.pk }}";
+            this.language = "ko";
+          };
+
+          (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://blog-uwcjemj9xj.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     
       <!-- Comment -->
-      {% if post.comment_set.exists %}
+      {% comment %} {% if post.comment_set.exists %}
         {% for comment in post.comment_set.iterator %}
            <div class="media mb-4" id="comment-{{ comment.pk }}">
               <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
@@ -55,6 +73,7 @@
               </div>
            </div>
         {% endfor %}
-      {% endif %}
+      {% endif %} {% endcomment %}
+
     </main>
 {% endblock %}

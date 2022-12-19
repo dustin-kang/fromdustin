@@ -29,7 +29,8 @@
           {% endif %}
           <h3 class="card-title my-3"><strong>{{ p.title }}</strong></h3>
           <p class="card-text my-2"><small class="text-muted">{{ p.created_at }}</small></p>
-          <p class="card-text text-muted">{{ p.get_content_markdown | truncatechars_html:20 | safe }}</p>
+          <!-- <p class="card-text text-muted">{{ p.get_content_markdown | truncatechars_html:20 | safe }}</p> -->
+          <p class="card-text text-muted">{{ p.hook_text | truncatechars:20 | safe }}</p>
           <hr>
         </div>
       </a>
@@ -39,7 +40,16 @@
   {% endif %}
   </main>
 {% endblock %}
-
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-uwcjemj9xj.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 {% comment %} {% block pagenations %}
 <!-- Pagenation -->
 <nav aria-label="Page navigation example">
