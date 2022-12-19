@@ -1,13 +1,19 @@
 
 <!-- Navigation -->
-<header class="mb-auto">
-    <div>
-        <a href="/about/" style="color: inherit;"><h3 class="float-md-start mb-0">@DongwooKang</h3></a>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0 " aria-current="page" href="/about/">About</a>
-        <a class="nav-link fw-bold py-1 px-0 active" href="/blog/">Blog</a>
-        <a class="nav-link fw-bold py-1 px-0" href="https://github.com/dustin-kang">Github</a>
-        </nav>
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom rounded sticky-top" style="background-color:rgba(255, 255, 255, 0.9);">
+    <div class="container d-flex flex-wrap">
+        <ul class="nav me-auto">
+        <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Dongwoo Kang</a></li>
+        </ul>
+        <div class="text-end">
+        <a type="button" class="btn btn-white text-dark me-2" href="/blog/">Blog</a>
+        <a type="button" class="btn btn-white text-dark me-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i></a>
+        {% if user.is_authenticated %}
+            {% if user.is_superuser or user.is_staff %}    
+                <a type="button" class="btn btn-white text-dark me-2" href="/blog/create_post/"><i class="fa-solid fa-pen"></i></a>
+            {% endif %}
+        {% endif %}    
+        </div>
     </div>
 </header>
 

@@ -1,77 +1,46 @@
 {% extends 'blogs/base.html' %} <!-- base 템플릿 상속 -->
 {% block main_area %}
-<main class="px-3" style="text-align: left;">
 
-  <!-- TAG -->
-  <br>
   {% for category in categories %}
-        <a type="button" class="btn btn-outline-secondary btn-sm" href="{{ category.get_absolute_url }}">{{ category }} ({{ category.post_set.count }}) </a>
+    <a type="button" class="btn btn-outline-success btn-sm mb-3" href="{{ category.get_absolute_url }}">{{ category }} ({{ category.post_set.count }})</a>
   {% endfor %}
-  <hr>
-
-  <!-- 스태프 버튼 -->
-  {% if user.is_authenticated %}
-  {% if user.is_superuser or user.is_staff %}
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <a class="btn btn-light" href="/blog/create_post/" role="button"><i class="fas fa-pen" ></i></a>
-    </div><br>
-  {% endif %}
-  {% endif %} 
 
   {% if post_list.exists %}
     {% for p in post_list %}
       <a href="/blog/{{ p.id }}" style="text-decoration: none; color:inherit;" >
         <div id="post-area">
-          {% if post.head_image.url %}
-          <img src="{{ p.head_image.url }}" class="card-img-top;" alt="{{ p }} head image">
-          {% else %}
-          <img src="http://picsum.photos/seed/{{ p.id }}/606/300" class="img-fluid rounded" alt="random_image">
-          {% endif %}
-          <h3 class="card-title my-3"><strong>{{ p.title }}</strong></h3>
-          <p class="card-text my-2"><small class="text-muted">{{ p.created_at }}</small></p>
-          <!-- <p class="card-text text-muted">{{ p.get_content_markdown | truncatechars_html:20 | safe }}</p> -->
-          <p class="card-text text-muted">{{ p.hook_text | truncatechars:20 | safe }}</p>
+          <div class="row">
+            <div class="col-9">
+              <h3 class="card-title my-3"><strong>{{ p.title }}</strong></h3>
+              <p class="card-text my-2"><small class="text-muted">{{ p.created_at }}</small></p>
+              <!-- <p class="card-text text-muted">{{ p.get_content_markdown | truncatechars_html:20 | safe }}</p> -->
+              <p class="card-text text-muted">{{ p.hook_text | truncatechars:20 | safe }}</p>
+            </div>
+            <div class="col-3 text-end">
+              {% if post.head_image.url %}
+              <img src="{{ p.head_image.url }}" class="card-img-top;" alt="{{ p }} head image">
+              {% else %}
+              <img src="http://picsum.photos/seed/{{ p.id }}/120/120" class="img-fluid rounded" alt="random_image">
+              {% endif %}
+            </div>
+          </div>
           <hr>
         </div>
       </a>
-    {% endfor %}   
+    {% endfor %} 
   {% else %}
-  <h3>아직 게시물이 없습니다.<h3>
+    <h3>아직 게시물이 없습니다.<h3>
   {% endif %}
-  </main>
 {% endblock %}
-<div id="disqus_thread"></div>
-<script>
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://blog-uwcjemj9xj.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% comment %} {% block pagenations %}
-<!-- Pagenation -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link"><i class="fa-solid fa-chevron-left"></i></a>
-    </li>
-    <li class="page-item ">
-      <a class="page-link"><i class="fa-solid fa-magnifying-glass"></i></a>
-    </li>
-    <li class="page-item ">
-    {% if user.is_authenticated %}
-      {% if user.is_superuser or user.is_staff %}    
-        <a class="page-link" href="/blog/create_post/" role="button"><i class="fas fa-pen" ></i></a>
-      {% endif %}
-    {% endif %}    
-    </li>
-    <li class="page-item disabled">
-      <a class="page-link" href="#"><i class="fa-solid fa-chevron-right"></i></a>
-    </li>
-  </ul>
-</nav>
 
-{% endblock %} {% endcomment %}
+<!-- Pagenation -->
+{% block pagenations %}
+<div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-outline-secondary">👈</button>
+    <button type="button" class="btn btn-outline-secondary">1</button>
+    <button type="button" class="btn btn-outline-secondary">👉</button>
+  </div>
+</div>
+{% endblock %}
 

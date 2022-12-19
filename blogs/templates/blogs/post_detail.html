@@ -8,57 +8,55 @@
 
 
 {% block main_area %}
-    <!-- 주제 -->
-    <main class="px-3" style="text-align: left;">
-      <!-- Title -->
-      <br>
-      <hr>
-      <span class="text-muted" style="font-size:10px">
-        {{ post.category }}
-        <!-- TAG -->
-      </span>
-      <h1 class="card-title mb-1"><strong>{{ post.title }}</strong></h1>
-      <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
-      {% if post.head_image %}
-        <img class= "img-fluid rounded" src="{{ post.head_image.url }}" alt=" {{ post.title }} head_image">
-      {% else %}
-        {% comment %} <img class= "img-fluid rounded mb-5" src="http://picsum.photos/seed/{{ post.id }}/606/300" alt=" random_image"> {% endcomment %}
-      {% endif %}
-      <br>
-      <!-- POST-->
-        <div>
-          <p class="card-text">{{ post.get_content_markdown | safe }}</p>
-          <hr>
-          {% if post.tags.exists %}
-          {% for tag in post.tags.all %}
-            <a href="{{ tag.get_absolute_url }}" class="badge rounded-pill text-bg-light" style="text-decoration:none">{{ tag }}</a>
-          {% endfor %}
-          {% endif %}
-        </div>
+  <!-- 포스트 -->
+  <div id="post-area">
+    <h1 class="card-title my-3 text-center"><strong>{{ post.title }}</strong></h1>
+    <p class="card-text my-2 text-center">
+      <small class="text-muted"><i class="fa-regular fa-clock"></i> {{ post.created_at }}</small>
       {% if user.is_authenticated and user == post.author %}
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <a class="btn btn-light" href="/blog/update_post/{{ post.pk }}/" role="button"><i class="fas fa-pen" ></i></a>
-        </div><br>
-      {% endif %} 
+      <a class="text-muted" href="/blog/update_post/{{ post.pk }}/" role="button"><i class="fa-solid fa-pen-to-square"></i></a> 
+      {% endif %}  
+    </p>
+    <div class="text-center">
+      {% if post.head_image %}
+      <img class= "img-fluid rounded" src="{{ post.head_image.url }}" alt=" {{ post.title }} head_image">
+      {% else %}
+      {% endif %}
+    </div>
+    <h5 class="card-text my-5 text-align:left;">
+      {{ post.get_content_markdown | safe }}
+    </h5>
+    <hr>
+  </div>
+
+  <!-- 해시태그-->
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    {% if post.tags.exists %}
+    {% for tag in post.tags.all %}
+      <a href="{{ tag.get_absolute_url }}" class="badge rounded-pill text-bg-light" style="text-decoration:none">{{ tag }}</a>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <br>
 
 
-      <!-- COMMENT -->
-      <div id="disqus_thread"></div> <!-- 실제 댓글 서버스 출력 -->
-      <script>
-          var disqus_config = function () {
-            this.page.url = "http://127.0.0.1:8000/blog/{{ post.pk }}/";
-            this.page.identifier = "{{ post.pk }}";
-            this.language = "ko";
-          };
+  <!-- COMMENT -->
+  <div id="disqus_thread"></div> <!-- 실제 댓글 서버스 출력 -->
+  <script>
+      var disqus_config = function () {
+        this.page.url = "http://127.0.0.1:8000/blog/{{ post.pk }}/";
+        this.page.identifier = "{{ post.pk }}";
+        this.language = "ko";
+      };
 
-          (function() { // DON'T EDIT BELOW THIS LINE
-          var d = document, s = d.createElement('script');
-          s.src = 'https://blog-uwcjemj9xj.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-          })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-uwcjemj9xj.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     
       <!-- Comment -->
       {% comment %} {% if post.comment_set.exists %}
@@ -75,5 +73,4 @@
         {% endfor %}
       {% endif %} {% endcomment %}
 
-    </main>
 {% endblock %}
