@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Category, Tag
 from django.utils.text import slugify
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
 
 
 class PostList(ListView):
@@ -98,6 +99,23 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
               self.object.tags.add(tag)
 
         return response
+
+class PostSearch(PostList): 
+    paginated_by = None # Search를 통해 결과를 다보여주기 위해 None으로 설정
+
+    def get_queryset(self):
+      q = self.kwargs['q'] # url로 넘어온 검색 결과를 받아 q에 저장
+      post_list = Post.objects.filter( 
+        Q(title__contains=q) | Q(hook_text__contains=q)
+      ).distinct() # 제목에 q를 포함하거나 태그 이름에 q를 포함하는 포스트 레코드들을 가져온다. / '__' 은 '.'와 같은 의미입니다. (class) /.distinct : 중복의 경우 한번만 나타나기
+      return post_list
+
+    def get_context_data(self, **kwargs):
+      context = super(PostSearch, self).get_context_data()
+      q = self.kwargs['q']
+      context['search_info'] = f'{self.get_queryset().count()}개의 <{q}> 검색 결과가 있습니다.' # 추가로 검색결과를 넘길 때 설정
+      return context
+
 
 def category_page(request, slug):
   category = Category.objects.get(slug=slug)

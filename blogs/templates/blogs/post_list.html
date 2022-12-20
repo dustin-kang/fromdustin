@@ -1,6 +1,11 @@
 {% extends 'blogs/base.html' %} <!-- base 템플릿 상속 -->
 {% block main_area %}
 
+  {% if search_info %}
+    <div class="alert alert-success" role="alert">
+    {{ search_info }}
+    </div>
+  {% endif %}
   {% for category in categories %}
     <a type="button" class="btn btn-outline-success btn-sm mb-3" href="{{ category.get_absolute_url }}">{{ category }} ({{ category.post_set.count }})</a>
   {% endfor %}
