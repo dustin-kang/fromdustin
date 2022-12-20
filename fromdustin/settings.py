@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogs',
-    'cv',
-    'projects',
+    'dongwoo',
     'crispy_forms',
     'markdownx',
 ]

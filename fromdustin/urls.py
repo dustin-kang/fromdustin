@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('blog/', include('blogs.urls')),
     path('admin/', admin.site.urls),
-    path('', include('cv.urls')),
+    path('', include('dongwoo.urls')),
     path('markdownx/', include('markdownx.urls')),
 ]
 

@@ -3,14 +3,14 @@
 <header class="d-flex align-items-center mb-5 mt-2 border-bottom rounded sticky-top" style="background-color:rgba(255, 255, 255, 0.9);">
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
-        <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Dongwoo Kang</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Dongwoo Kang</a></li>
         </ul>
         <div class="text-end">
         <a type="button" class="btn btn-white text-dark me-2" href="/blog/">Blog</a>
-        <a type="button" class="btn btn-white text-dark me-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a type="button" class="btn btn-white text-dark me-2" href="https://github.com/dustin-kang"><i class="fa-brands fa-github"></i></a>
         {% if user.is_authenticated %}
             {% if user.is_superuser or user.is_staff %}    
-                <a type="button" class="btn btn-white text-dark me-2" href="/blog/create_post/"><i class="fa-solid fa-pen"></i></a>
+                <a type="button" class="btn btn-white text-dark me-2" href="/admin/"><i class="fa-solid fa-gear"></i></a>
             {% endif %}
         {% endif %}    
         </div>

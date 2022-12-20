@@ -1,0 +1,92 @@
+{% extends 'dongwoo/base.html' %} <!-- base 템플릿 상속 -->
+{% block main_area %}
+<section>
+    <p class="title">
+        안녕하세요.<br>
+        다양한 협업을 생각하는<br>
+        <span style="color:#2a623d">강동우</span>입니다.
+    </p>
+    <ul class="listul" id="bold">
+        <li>근본적인 부분부터 개선하는 것을 중요하게 생각합니다.</li>
+        <li>목적에 맞는 업무를 좋아합니다. </li>
+        <li>주도적이고 솔직한 피드백이 오가는 조직을 좋아합니다. </li>
+        <li>과정을 기록하며 문제를 천천히 개선하는 것을 좋아합니다. </li>
+    </ul>
+</section>
+
+<section>
+    <p class="subtitle">
+        Tech Skills
+    </p>
+    <ul class="listul">
+        <li><span id="bold">Computer Vision</span> 관련한 딥러닝 모델에 대해 꾸준히 연구하고 있습니다.</li>
+        <li>다양한 <span id="bold">머신러닝 알고리즘</span>을 이용해 다양한 토이 프로젝트를 해봤고 <span id="bold">최적화</span>를 위한 성능을 개선한 경험이 있습니다.</li>
+        <li><span id="bold">Git & Github</span>등의 CI/CD 활용 뿐만 아니라 <span id="bold">Shell Script</span> 사용에 익숙합니다.</li>
+        <li><span id="bold">Kafka, Spark, Flink</span>를 활용해 실시간 데이터 처리를 해본 경험이 있습니다.</li>
+        <li><span id="bold">프론트엔드, 백엔드</span>에 걸친 설계, 개발, 유지보수를 해본 경험이 있습니다.</li>
+    </ul>
+</section>
+
+<section>
+    <p class="subtitle">
+        Side Project
+    </p>
+    <div class="career">
+        <div class="company">포트폴리오 블로그 웹 개발</div>
+        <ul class="listul">
+            <li>Django Framework를 이용하여 구현</li>
+            <li>AWS 배포</li>
+        </ul>
+        <div class="date">2022.12</div>
+        <button type="button" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#pj1"><i class="fa-solid fa-circle-info"></i> 자세히 보기</button>
+    </div>
+    <div class="career">
+        <div class="company">음악 취향에 맞는 MBTI 분석 서비스</div>
+        <ul class="listul">
+            <li>Flask Framework를 이용하여 구현</li>
+            <li>XGboost 모델로 MBTI 예측 및 랜덤 음원 추천기능 구현</li>
+            <li>AWS ElasticBeanstalk, Heroku 배포</li>
+        </ul>
+        <div class="date">2021.11</div>
+        <button type="button" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#pj2"><i class="fa-solid fa-circle-info"></i> 자세히 보기</button>
+    </div>
+    <div class="career">
+        <div class="company">실시간 표정 감정인식 시스템</div>
+        <ul class="listul">
+            <li>Open CV 라이브러리를 활용하여 카메라 인식 구현</li>
+            <li>Mini-Xception 알고리즘을 이용해 감정인식 시스템 구현</li>
+            <li>AWS ElasticBeanstalk, Heroku 배포</li>
+        </ul>
+        <div class="date">2020.09</div>
+        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#pj3"><i class="fa-solid fa-circle-info"></i> 자세히 보기</button>
+    </div>
+</section>
+
+<section>
+    <p class="subtitle">
+        Certificates
+    </p>
+    <div class="career">
+        <div class="company">국가이공계우수장학생 선정</div>
+        <div class="job">과학정보기술통신부</div>
+        <div class="date">2020.10</div>
+    </div>
+</section>
+
+<section>
+    <p class="subtitle">
+        Experiences
+    </p>
+    <div class="career">
+        <div class="company">한신대학교 IT콘텐츠학과</div>
+        <div class="date">2016.03 ~ 2023.02</div>
+    </div>
+</section>
+
+{% include 'dongwoo/modal.html' %}
+
+{% endblock %}
+
+    
+
+
