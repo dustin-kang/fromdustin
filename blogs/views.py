@@ -5,9 +5,11 @@ from .models import Post, Category, Tag
 from django.utils.text import slugify
 from django.core.exceptions import PermissionDenied
 
+
 class PostList(ListView):
     model = Post
     ordering = '-pk'
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
       context = super(PostList,self).get_context_data() # 기존 제공한 기능 context에 저장

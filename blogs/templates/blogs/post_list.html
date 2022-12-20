@@ -7,7 +7,7 @@
 
   {% if post_list.exists %}
     {% for p in post_list %}
-      <a href="/blog/{{ p.id }}" style="text-decoration: none; color:inherit;" >
+      <a href="/blog/{{ p.id }}" style="text-decoration: none; color:inherit;">
         <div id="post-area">
           <div class="row">
             <div class="col-9">
@@ -33,14 +33,33 @@
   {% endif %}
 {% endblock %}
 
-<!-- Pagenation -->
-{% block pagenations %}
-<div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group me-2" role="group" aria-label="First group">
-    <button type="button" class="btn btn-outline-secondary">👈</button>
-    <button type="button" class="btn btn-outline-secondary">1</button>
-    <button type="button" class="btn btn-outline-secondary">👉</button>
-  </div>
-</div>
+{% block paginated %}
+  {% if is_paginated %}
+   <ul class="pagination justify-content-center mb-4">
+      {% if page_obj.has_previous %}  <!-- 이전 페이지가 존재하는 경우 -->
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">처음</a>
+        </li>      
+      {% endif %}
+      <li class="page-item">
+        <a class="page-link" href="#">{{ page_obj.number }}</a>
+      </li>
+      {% if page_obj.has_next %} <!-- 이후 페이지가 존재하는 경우-->
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#">끝</a>
+      </li>      
+    {% endif %}
+    </ul>
+  {% endif %}
 {% endblock %}
+
+
 
