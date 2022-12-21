@@ -23,7 +23,7 @@
             </div>
             <div class="col-3 text-end">
               {% if post.head_image.url %}
-              <img src="{{ p.head_image.url }}" class="card-img-top;" alt="{{ p }} head image">
+              <img src="{{ p.head_image.url }}" class="card-img-top;" alt="{{ p }} head image" width=120 height=120>
               {% else %}
               <img src="http://picsum.photos/seed/{{ p.id }}/120/120" class="img-fluid rounded" alt="random_image">
               {% endif %}
