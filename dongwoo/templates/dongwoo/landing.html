@@ -1,92 +1,112 @@
 {% extends 'dongwoo/base.html' %} <!-- base 템플릿 상속 -->
 {% block main_area %}
-<section>
-    <p class="title">
-        안녕하세요.<br>
-        다양한 협업을 생각하는<br>
-        <span style="color:#2a623d">강동우</span>입니다.
-    </p>
-    <ul class="listul" id="bold">
-        <li>근본적인 부분부터 개선하는 것을 중요하게 생각합니다.</li>
-        <li>목적에 맞는 업무를 좋아합니다. </li>
-        <li>주도적이고 솔직한 피드백이 오가는 조직을 좋아합니다. </li>
-        <li>과정을 기록하며 문제를 천천히 개선하는 것을 좋아합니다. </li>
-    </ul>
-</section>
+<div class="container">
+    <section>
+        <p class="title">
+            🌱<br>
+            안녕하세요.<br>
+            다양한 협업을 생각하는<br>
+            <span style="color:#2a623d" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false">강동우</span>입니다.
+        </p>
+        <p class="paragraph">
+            머신러닝 엔지니어를 꿈꾸고 있으며 다양한 도메인으로 활용도가 높은 서비스를 제공하는 것을 좋아합니다.
+            도전적이고 긍정적인 환경를 선호하며 솔직한 피드백을 통해 성장하는 것에 뿌듯함을 느낍니다.<br>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <i class="fa-solid fa-envelope"></i> dongwoomail@icloud.com
+        </div>
+        
+    </section>
+</div>
 
-<section>
-    <p class="subtitle">
-        Tech Skills
-    </p>
-    <ul class="listul">
-        <li><span id="bold">Computer Vision</span> 관련한 딥러닝 모델에 대해 꾸준히 연구하고 있습니다.</li>
-        <li>다양한 <span id="bold">머신러닝 알고리즘</span>을 이용해 다양한 토이 프로젝트를 해봤고 <span id="bold">최적화</span>를 위한 성능을 개선한 경험이 있습니다.</li>
-        <li><span id="bold">Git & Github</span>등의 CI/CD 활용 뿐만 아니라 <span id="bold">Shell Script</span> 사용에 익숙합니다.</li>
-        <li><span id="bold">Kafka, Spark, Flink</span>를 활용해 실시간 데이터 처리를 해본 경험이 있습니다.</li>
-        <li><span id="bold">프론트엔드, 백엔드</span>에 걸친 설계, 개발, 유지보수를 해본 경험이 있습니다.</li>
-    </ul>
-</section>
-
-<section>
+<div class="container">
     <p class="subtitle">
         Side Project
     </p>
-    <div class="career">
-        <div class="company">포트폴리오 블로그 웹 개발</div>
-        <ul class="listul">
-            <li>Django Framework를 이용하여 구현</li>
-            <li>AWS 배포</li>
-        </ul>
-        <div class="date">2022.12</div>
-        <button type="button" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#pj1"><i class="fa-solid fa-circle-info"></i> 자세히 보기</button>
-    </div>
-    <div class="career">
-        <div class="company">음악 취향에 맞는 MBTI 분석 서비스</div>
-        <ul class="listul">
-            <li>Flask Framework를 이용하여 구현</li>
-            <li>XGboost 모델로 MBTI 예측 및 랜덤 음원 추천기능 구현</li>
-            <li>AWS ElasticBeanstalk, Heroku 배포</li>
-        </ul>
-        <div class="date">2021.11</div>
-        <button type="button" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#pj2"><i class="fa-solid fa-circle-info"></i> 자세히 보기</button>
-    </div>
-    <div class="career">
-        <div class="company">실시간 표정 감정인식 시스템</div>
-        <ul class="listul">
-            <li>Open CV 라이브러리를 활용하여 카메라 인식 구현</li>
-            <li>Mini-Xception 알고리즘을 이용해 감정인식 시스템 구현</li>
-            <li>AWS ElasticBeanstalk, Heroku 배포</li>
-        </ul>
-        <div class="date">2020.09</div>
-        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#pj3"><i class="fa-solid fa-circle-info"></i> 자세히 보기</button>
-    </div>
-</section>
+    <section class="a-section">
+        <div class="company" data-bs-toggle="modal" data-bs-target="#pj1" >포트폴리오 블로그 웹 개발  <i class="fa-solid fa-chevron-right "></i></div>
+        <span class="date">2022.11. - 2022.12</span>
+        <p id="p">
+            Django 웹 프레임워크 기반으로 개인 포트폴리오 블로그를 개발했습니다. 아마존 웹서비스를 통해 서버를 배포하였습니다.
+        </p>
+    </section> 
+    <section class="a-section">
+        <div class="company" data-bs-toggle="modal" data-bs-target="#pj2" >음악 취향에 맞는 MBTI 분석 서비스  <i class="fa-solid fa-chevron-right "></i></div>
+        <span class="date">2021.12. - 2022.01, 2022.10</span>
+        <p id="p">
+            XGboost 모델을 이용해 MBTI 예측 및 랜덤 음원을 추천하는 기능을 구현하여 AWS ElasticBeanstalk, Heroku를 통해 배포하였습니다.
+        </p>
+    </section> 
+    <section class="a-section">
+        <div class="company" data-bs-toggle="modal" data-bs-target="#pj3" >실시간 표정 감정인식 시스템  <i class="fa-solid fa-chevron-right "></i></div>
+        <span class="date">2020.11. - 2020.12</span>
+        <p id="p">
+            OpenCV 라이브러리를 활용하여 카메라 인식을 구현하고 Mini-Xception 알고리즘을 이용해 감정인식 시스템을 구현하였습니다.
+        </p>
+    </section> 
+</div>
 
-<section>
-    <p class="subtitle">
-        Certificates
-    </p>
-    <div class="career">
-        <div class="company">국가이공계우수장학생 선정</div>
-        <div class="job">과학정보기술통신부</div>
-        <div class="date">2020.10</div>
-    </div>
-</section>
-
-<section>
+<div class="container">
     <p class="subtitle">
         Experiences
     </p>
-    <div class="career">
-        <div class="company">한신대학교 IT콘텐츠학과</div>
-        <div class="date">2016.03 ~ 2023.02</div>
-    </div>
-</section>
+    <section  class="a-section">
+        <div class="headtitle" >A.I. 부트캠프</div>
+        <span class="job">7th Learner</span>
+        <span class="date">2021.09 - 2022.05</span>
+        <p id="p">
+            머신러닝에 대한 깊은 이해와 관심으로 데이터사이언스, 머신러닝, 딥러닝, 엔지니어링 등 데이터 분야 기초 지식을 습득하였습니다. 분야별로 토이 프로젝트를 진행해본 경험이 있습니다.
+        </p>
+    </section> 
+    <section  class="a-section">
+        <div class="headtitle" >한신대학교</div>
+        <span class="job">IT콘텐츠학과</span>
+        <span class="date">2016.03 - 2023.02</span>
+        <p id="p">
+            IT콘텐츠학과에서 자료구조, 데이터사이언스, 웹 프로그래밍, UXUI 디자인 등의 과목을 이수하였으며 우수한 성적으로 국가이공계우수장학생으로 선정되어 장학금을 얻었습니다.
+        </p>
+    </section> 
+</div>
+
+<div class="container">
+    <p class="subtitle">
+        Skills
+    </p>
+    <section  class="a-section">
+            <div class="headtitle" >Developer</div>
+            <ul id="ul">
+                <li>프론트엔드, 백엔드에 걸친 설계, 개발, 유지보수를 해본 경험이 있습니다.</li>
+                <li>Git & Github 등의 CI/CD 활용 뿐만 아니라 Shell Script 사용에 익숙합니다.</li>
+                <li>목적에 맞는 기술을 사용하여 최선의 결과를 유도하도록 노력합니다.</li>
+            </ul>
+    </section>
+    <section  class="a-section">
+        <div class="headtitle" >Collaborate</div>
+        <ul id="ul">
+            <li>도메인 지식을 넓히기 위해 다양한 사람들과의 소통을 선호하며 이를 통해 영감을 얻습니다.</li>
+            <li>적극적으로 의견을 표출하고 솔직한 피드백이 오가는 것을 선호합니다.</li>
+            <li>언제나 겸손함을 유지하기 위해 노력합니다.</li>
+        </ul>
+    </section>
+    <section  class="a-section">
+        <div class="headtitle" >ML/AI</div>
+        <ul id="ul">
+            <li>교내 빅데이터&인공지능 활용대회에서 좋은 성적으로 입상하였습니다.</li>
+            <li>성능 개선을 위해 하이퍼파라미터, 교차검증으로 모델을 최적화 할 수 있습니다.</li>
+            <li>딥러닝 논문 스터디를 통해서 새로운 논문을 접하고 탐구하고 있습니다.</li>
+            <li>데이터 전처리에 능숙하며 추천 시스템에 관심을 갖고 있습니다.</li>
+        </ul>
+    </section>
+    <section  class="a-section">
+        <div class="headtitle" >Web</div>
+        <ul id="ul">
+            <li>Flask와 Django 기반으로 웹 앱을 개발한 경험이 있으며 경우에 따라 다르게 사용할 수 있습니다.</li>
+            <li>기능 구현을 위한 BeautifulSoup 라이브러리를 이용해 테스트코드를 작성할 수 있습니다.</li>
+        </ul>
+    </section>
+</div>
+
 
 {% include 'dongwoo/modal.html' %}
 
 {% endblock %}
-
-    
-
-
