@@ -11,3 +11,4 @@ __pycache__
 .idea/
 migrations/
 _media/
+logs/

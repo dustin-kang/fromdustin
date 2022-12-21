@@ -28,3 +28,6 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+hadler404 = 'dongwoo.views.page_not_found'
+hadler500 = 'dongwoo.views.server_error'
