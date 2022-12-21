@@ -32,7 +32,7 @@ DEBUG = True
 # else:
 #      ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['52.79.129.71']
+ALLOWED_HOSTS = ['52.79.129.71', 'dongwookang.me']
 
 
 # Application definition
