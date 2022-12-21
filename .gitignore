@@ -1,7 +1,7 @@
 bootstrap-5.0.2-dist
 
 /pretemplate
-
+.DS_Store
 # Django Stuff:
 *.log
 local_settings.py

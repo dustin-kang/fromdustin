@@ -4,29 +4,56 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg ">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">실시간 표정 감정인식 시스템</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">포트폴리오 블로그 웹 개발</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="h-section">
                 <h3 class="h-title">🔗 Deployment URL</h3>
-                <a href="#">http://www.youtube.com/channel/</a>
+                <a href="#">개발 사이트</a>
+                <a href="https://github.com/dustin-kang/fromdustin">레포지토리</a>
             </div>
             <div class="h-section">
                 <h3 class="h-title">👨‍💻 Summary</h3>
-                <p class="h-p"></p>
+                <p class="h-p">
+                  Python Django WebFramework 기반으로 제작한 포트폴리오 용도의 웹사이트입니다.<br>
+                  <li>포스트 목록, 상세 페이지 구현</li>
+                  <li>DISQUS를 활용한 댓글 기능 구현</li>
+                  <li>Markdownx로 마크다운 HTML 변환 기능 구현</li>
+                  <li>태그 및 카테고리 기능 구현</li>
+                  <li>포스트 검색 기능 구현</li>
+                  <li>AWS 활용 서버 배포</li>
+                </p>
             </div>
             <div class="h-section">
                 <h3 class="h-title">🤔 Background</h3>
-                <p class="h-p"></p>
+                <p class="h-p">
+                  이 프로젝트를 진행하게된 이유는 Django에 대한 학습을 위해 진행하게 되었습니다.<br>
+                  기존에 만들었던 Flask를 이용한 프로젝트에 비해 성능과 보안 측면에서 타당하다고 생각을 했으며 DB 구조를 편리하게 사용할 수 있음이었습니다.
+                  또한 성장 기록에 대한 경험이 부족했기 때문에 이를 채워나가고자 개설하게되었습니다.
+                </p>
             </div>
             <div class="h-section">
                 <h3 class="h-title">🔍 Meaning</h3>
-                <p class="h-p"></p>
+                <p class="h-p">
+                  오랫동안 두고 사용할 프로젝트이기 때문에 기능 하나하나에 신중하게 생각하였습니다.
+                  이 프로젝트를 통해서 HTML,CSS,JavaScript에 대한 기초적인 지식을 다시 이해하게 되었으며 기존 데이터분야에서 좀 더 넓혀갈 발판이 되었습니다.
+                  프로젝트를 진행하면서 프레임워크와 모듈간의 버전 문제가 종종 있었지만 다른 대책방안을 내세워 이슈를 해결하였습니다.
+                </p>
+                <p class="h-p">
+                  결과적으로, 웹 개발에 대한 매력을 느끼게 해주었던 프로젝트였습니다. 
+                  블로그에는 저의 개발 회고 및 각가지 개발 지식등을 업로드 할 예정이고 천천히 Resume 페이지를 수정할 것입니다.
+                </p>
             </div>
             <div class="h-section">
                 <h3 class="h-title">🪄 Stacks</h3>
-                <p class="h-p"></p>
+                <p class="h-p">
+                  <li>Language : Python 3.9</li>
+                  <li>FrontEnd : Bootstrap 5.0</li>
+                  <li>Backend : Django REST Framework</li>
+                  <li>Database : PostgreSQL</li>
+                  <li>Depolyment : AWS(LS)</li>
+                </p>
             </div>
         </div>
       </div>
@@ -39,28 +66,51 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg ">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">실시간 표정 감정인식 시스템</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">음악 취향에 맞는 MBTI 분석 서비스</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="h-section">
                 <h3 class="h-title">🔗 Deployment URL</h3>
-                <a href="#">http://www.youtube.com/channel/</a>
+                <img src="https://github.com/dustin-kang/db-music-mbti-classification/raw/main/keynote/title2.png?raw=true" height=200 width=400>
+                <li><a href="http://www.mbtify.ml">개발 사이트</a></li>
+                <li><a href="https://github.com/dustin-kang/mbtify">깃허브 레포지토리</a></li>
+                <li><a href="https://www.youtube.com/watch?v=gowY7fZMITE&feature=youtu.be">초기 버전 발표 영상</a></li>
             </div>
             <div class="h-section">
                 <h3 class="h-title">👨‍💻 Summary</h3>
-                <p class="h-p"></p>
+                <p class="h-p">
+                  Spotify 음원 데이터 API를 활용하여 플레이리스트 기반으로 XGBoost 머신러닝 모델링하여 MBTI 값을 예측하는 프로젝트 입니다. 다른 방식의 서버 배포를 경험하고자 초기 버전에는 heroku를 사용하였고 2차 버전에서는 AWS BE를 사용하였습니다.
+
+                  <li>MinmaxScaler를 통해 성능 최적화 및 유지보수</li>
+                  <li>MBTI에 맞는 음원 랜덤 추천 시스템 기능 구현</li>
+                  <li>Metabase를 이용하여 데이터 분석 시각화</li>
+                  <li>단계별 Branch를 활용한 Git Flow 전략</li>
+                  <br>
+                  <img src="https://github.com/dustin-kang/db-music-mbti-classification/blob/main/keynote/EDA%20Dashboard.png?raw=true" width=400>
+                </p>
             </div>
             <div class="h-section">
                 <h3 class="h-title">🤔 Background</h3>
-                <p class="h-p"></p>
+                <p class="h-p">
+                  신박한 발상으로 시작된 프로젝트로 다양한 분위기와 장르가 있는 음악이 MBTI와 비슷한 연관성을 가지지 않을까라는 생각을 시작으로 이를 통해 음악을 추천해주는 서비스로 생각을 이어갔습니다.
+                </p>
             </div>
             <div class="h-section">
                 <h3 class="h-title">🔍 Meaning</h3>
-                <p class="h-p"></p>
+
+                <p class="h-p">데이터 수집부터 데이터베이스 적재, 머신러닝 활용, 웹서비스 개발 및 배포 과정 등 데이터 분야 전과정의 흐름을 간략하게 진행했던 프로젝트였습니다. 그리고
+                  버전 1, 버전 2에서도 급격한 트래픽 증가로 서버에 문제가 발생하는 것은 아직 해결되지 못했습니다. 추후 이슈에 적어놓고 차근차근 해결해 나갈 예정입니다.</p>
             </div>
             <div class="h-section">
                 <h3 class="h-title">🪄 Stacks</h3>
+                  <li>python 3.8</li>
+                  <li>scikit-learn 1.1.3</li>
+                  <li>flask 2.2.2</li>
+                  <li>pandas 1.5.1</li>
+                  <li>requests 2.28.1</li>
+                  <li>xgboost 1.7.0</li>
+                  <li>awsebcli 3.20.3</li>
                 <p class="h-p"></p>
             </div>
         </div>
