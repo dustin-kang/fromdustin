@@ -4,7 +4,10 @@
   <head>
       <!-- meta -->
       <meta charset="utf-8">
-      <title>{% block head_title %}Blog - Dongwoo Kang{% endblock %}</title>
+      <meta content="동우의 블로그" property='og:title'>
+      <meta content="반가워요. 많은 이야기 함께 나눠요." property='og:description'>
+      <meta content="https://user-images.githubusercontent.com/55238671/209155259-d95f4ae6-29c3-4dad-bae9-b12f7c182f9b.png" property='og:image'>
+      <title>{% block head_title %}동우의 웹로그{% endblock %}</title>
       <!-- CSS -->
       <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet" media="screen">
       <link href="{% static 'cover.css' %}" rel="stylesheet">
